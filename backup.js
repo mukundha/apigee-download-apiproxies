@@ -3,7 +3,7 @@ var async = require('async');
 var config = require('./config');
 var fs = require('fs');
 
-var urlbase = config.scheme + "://" +config.user + ":" + config.password + '@' + config.host + ":"+ config.port + "/v1/o/" + config.org ;
+var urlbase = config.scheme + "://" + config.host + ":"+ config.port + "/v1/o/" + config.org ;
 var auth = "Basic " + new Buffer(config.user + ":" + config.password).toString("base64");
 //GET all apis
 
