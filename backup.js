@@ -7,6 +7,12 @@ var urlbase = config.scheme + "://" + config.host + ":"+ config.port + "/v1/o/" 
 var auth = "Basic " + new Buffer(config.user + ":" + config.password).toString("base64");
 //GET all apis
 
+//create data folder
+if(!fs.existsSync("data") || !fs.statSync("data").isDirectory()){
+    console.log('directory not existing, create a new one');
+    fs.mkdirSync('data');    
+}
+
 request( {url: urlbase + '/apis', headers: {Authorization: auth}}, function(err,response,apis){
     async.each( JSON.parse(apis), function(api,cb){
         //console.log(urlbase + '/apis/' + api + '/revisions');
